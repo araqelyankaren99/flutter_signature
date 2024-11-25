@@ -1,13 +1,12 @@
-import 'package:check_in/src/presentation/widgets/global/input/custom_text_font.dart';
 import 'package:flutter/material.dart';
 
 class SignatureTextWidget extends StatelessWidget {
   const SignatureTextWidget({
-    Key? key,
+    super.key,
     required this.signatureText,
     required this.fontWeight,
     required this.color,
-  }) : super(key: key);
+  });
 
   final String signatureText;
   final FontWeight fontWeight;
@@ -17,12 +16,10 @@ class SignatureTextWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       signatureText,
-      style: CustomTextFont.textStyle(
-        textStyle: TextStyle(
+      style: TextStyle(
           fontSize: 40,
           color: color,
           fontWeight: fontWeight,
-        ),
       ),
     );
   }

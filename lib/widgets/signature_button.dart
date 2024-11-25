@@ -1,18 +1,16 @@
-import 'package:check_in/src/presentation/widgets/global/empty_widget.dart';
-import 'package:check_in/src/presentation/widgets/global/input/custom_text_font.dart';
-import 'package:check_in/src/presentation/widgets/signature/builder.dart';
-import 'package:check_in/src/utils/resources/colors.dart';
-import 'package:check_in/src/utils/resources/texts.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_signature/constants.dart';
+import 'package:flutter_signature/widgets/empty.dart';
+import 'package:flutter_signature/widgets/signature_builder.dart';
 import 'package:signature/signature.dart';
 
 class SignatureButtonWidget extends StatelessWidget {
   const SignatureButtonWidget({
-    Key? key,
+    super.key,
     required this.signatureController,
     required this.height,
     required this.signatureButtonPadding,
-  }) : super(key: key);
+  });
 
   final SignatureController signatureController;
   final double height;
@@ -34,7 +32,7 @@ class SignatureButtonWidget extends StatelessWidget {
                       borderRadius: BorderRadius.circular(10),
                       child: SizedBox(
                         height: height,
-                        child: AspectRatio(
+                        child: const AspectRatio(
                           aspectRatio: 1.37,
                           child: ColoredBox(
                             color: cSignatureClearButtonBgColor,
@@ -42,12 +40,10 @@ class SignatureButtonWidget extends StatelessWidget {
                               child: Text(
                                 cSignatureClearButtonText,
                                 textAlign: TextAlign.center,
-                                style: CustomTextFont.textStyle(
-                                  textStyle: const TextStyle(
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.w500,
-                                    color: cSignatureClearButtonTextColor,
-                                  ),
+                                style: TextStyle(
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.w500,
+                                  color: cSignatureClearButtonTextColor,
                                 ),
                               ),
                             ),

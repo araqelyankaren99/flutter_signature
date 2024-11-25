@@ -1,12 +1,12 @@
-import 'package:check_in/src/utils/resources/colors.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_signature/constants.dart';
 import 'package:signature/signature.dart';
 
 class SignatureBodyWidget extends StatelessWidget {
   const SignatureBodyWidget({
-    Key? key,
+    super.key,
     required this.signatureController,
-  }) : super(key: key);
+  });
 
   final SignatureController signatureController;
 

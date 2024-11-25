@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_signature/screens/signature_image_screen.dart';
 import 'package:flutter_signature/utils/signature_util.dart';
