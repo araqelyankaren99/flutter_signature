@@ -3,24 +3,18 @@ import 'package:flutter/material.dart';
 class SignatureTextWidget extends StatelessWidget {
   const SignatureTextWidget({
     super.key,
-    required this.signatureText,
-    required this.fontWeight,
-    required this.color,
+    required this.text,
+    required this.textStyle,
   });
 
-  final String signatureText;
-  final FontWeight fontWeight;
-  final Color color;
+  final String text;
+  final TextStyle textStyle;
 
   @override
   Widget build(BuildContext context) {
     return Text(
-      signatureText,
-      style: TextStyle(
-          fontSize: 40,
-          color: color,
-          fontWeight: fontWeight,
-      ),
+      text,
+      style: textStyle,
     );
   }
 }

@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_signature/constants.dart';
+import 'package:flutter_signature/widgets/signature_widget.dart';
 import 'package:signature/signature.dart';
 
 class SignatureBuilder extends StatefulWidget {
   const SignatureBuilder({
     super.key,
     required this.builder,
-    required this.signatureController,
+    required this.controller,
     this.onSignatureIsEmptyChange,
   });
 
   final SignatureIsEmptyBuilder builder;
-  final SignatureController signatureController;
+  final SignatureController controller;
   final OnSignatureIsEmptyChanged? onSignatureIsEmptyChange;
 
   @override
@@ -34,20 +34,20 @@ class _SignatureBuilderState extends State<SignatureBuilder> {
   }
 
   void _initialize() {
-    _isEmptySignature = widget.signatureController.isEmpty;
+    _isEmptySignature = widget.controller.isEmpty;
     _addListener();
   }
 
   void _addListener() {
-    widget.signatureController.addListener(_signatureListener);
+    widget.controller.addListener(_signatureListener);
   }
 
   void _removeListener() {
-    widget.signatureController.removeListener(_signatureListener);
+    widget.controller.removeListener(_signatureListener);
   }
 
   void _signatureListener() {
-    final isEmptySignature = widget.signatureController.isEmpty;
+    final isEmptySignature = widget.controller.isEmpty;
     if(isEmptySignature == _isEmptySignature){
       return;
     }
