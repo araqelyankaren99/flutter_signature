@@ -29,8 +29,8 @@ class SignatureButtonWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return SignatureBuilder(
       controller: controller,
-      builder: (context, isEmptySignature) {
-        return !isEmptySignature
+      builder: (context, isFill) {
+        return isFill
             ? Align(
                 alignment: Alignment.topRight,
                 child: Padding(

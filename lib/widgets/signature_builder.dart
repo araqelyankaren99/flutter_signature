@@ -10,7 +10,7 @@ class SignatureBuilder extends StatefulWidget {
     this.onSignatureIsEmptyChange,
   });
 
-  final SignatureIsEmptyBuilder builder;
+  final SignatureIsFillBuilder builder;
   final SignatureController controller;
   final OnSignatureIsEmptyChanged? onSignatureIsEmptyChange;
 
@@ -19,7 +19,7 @@ class SignatureBuilder extends StatefulWidget {
 }
 
 class _SignatureBuilderState extends State<SignatureBuilder> {
-  late bool _isEmptySignature;
+  late bool _isFillSignature;
 
   @override
   void initState() {
@@ -34,7 +34,7 @@ class _SignatureBuilderState extends State<SignatureBuilder> {
   }
 
   void _initialize() {
-    _isEmptySignature = widget.controller.isEmpty;
+    _isFillSignature = widget.controller.isNotEmpty;
     _addListener();
   }
 
@@ -47,12 +47,12 @@ class _SignatureBuilderState extends State<SignatureBuilder> {
   }
 
   void _signatureListener() {
-    final isEmptySignature = widget.controller.isEmpty;
-    if(isEmptySignature == _isEmptySignature){
+    final isFillSignature = widget.controller.isNotEmpty;
+    if(isFillSignature == _isFillSignature){
       return;
     }
-    _isEmptySignature = isEmptySignature;
-    widget.onSignatureIsEmptyChange?.call(isEmptySignature);
+    _isFillSignature = isFillSignature;
+    widget.onSignatureIsEmptyChange?.call(isFillSignature);
     setState(() {});
   }
 
@@ -61,7 +61,7 @@ class _SignatureBuilderState extends State<SignatureBuilder> {
   Widget build(BuildContext context) {
     return widget.builder(
       context,
-      _isEmptySignature,
+      _isFillSignature,
     );
   }
 }

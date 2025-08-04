@@ -6,15 +6,17 @@ import 'package:flutter_signature/widgets/signature_text.dart';
 import 'package:signature/signature.dart';
 
 typedef OnSignatureIsEmptyChanged = void Function(bool);
-typedef SignatureIsEmptyBuilder = Widget Function(
+typedef SignatureIsFillBuilder = Widget Function(
   BuildContext context,
-  bool isKeyboardVisible,
+  bool isFill,
 );
+typedef OnSignatureStateChanged = void Function(SignatureState);
 
 class SignatureWidget extends StatelessWidget {
   const SignatureWidget({
     super.key,
     required this.controller,
+    this.onSignatureStateChanged,
     this.hintText = 'Sign here',
     this.hintTextStyle = const TextStyle(
       fontWeight: FontWeight.w400,
@@ -54,6 +56,7 @@ class SignatureWidget extends StatelessWidget {
   final double height;
   final double borderRadius;
   final double borderWidth;
+  final OnSignatureStateChanged? onSignatureStateChanged;
 
   @override
   Widget build(BuildContext context) {
@@ -117,8 +120,8 @@ class _SignatureTextWidget extends StatelessWidget {
       child: Align(
         child: SignatureBuilder(
           controller: controller,
-          builder: (context, isEmptySignature) {
-            return isEmptySignature
+          builder: (context, isFill) {
+            return !isFill
                 ? SignatureTextWidget(
                    text: text,
                     textStyle: textStyle,
