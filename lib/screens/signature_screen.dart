@@ -1,22 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_signature/resources/app_colors.dart';
+import 'package:flutter_signature/resources/app_texts.dart';
 import 'package:flutter_signature/screens/signature_image_screen.dart';
 import 'package:flutter_signature/utils/signature_util.dart';
 import 'package:flutter_signature/widgets/signature_widget.dart';
 import 'package:signature/signature.dart';
 
 enum _SignatureState {
-  error , inactive , active ,
+  error , inactive , active
 }
 
 extension _SignatureStateExtension on _SignatureState {
   Color getBorderColor() {
     switch(this){
       case _SignatureState.error:
-        return const Color(0xFFCE0A07);
+        return AppColors.errorColor;
       case _SignatureState.inactive:
-       return const Color(0xFFAAAAAA);
+       return AppColors.inactiveColor;
       case _SignatureState.active:
-       return const Color(0xFF72BFEA);
+       return AppColors.activeColor;
     }
   }
 }
@@ -73,7 +75,7 @@ class _SignatureScreenState extends State<SignatureScreen> {
               padding: const EdgeInsets.only(top: 20),
               child: ElevatedButton(
                 onPressed: _onGetSignature,
-                child: const Text('Get signature image'),
+                child: const Text(AppTexts.getSignatureText),
               ),
             )
           ],

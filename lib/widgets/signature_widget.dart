@@ -1,30 +1,30 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_signature/resources/app_colors.dart';
+import 'package:flutter_signature/resources/app_texts.dart';
 import 'package:flutter_signature/widgets/empty.dart';
 import 'package:flutter_signature/widgets/signature_builder.dart';
 import 'package:flutter_signature/widgets/signature_button.dart';
 import 'package:flutter_signature/widgets/signature_text.dart';
 import 'package:signature/signature.dart';
 
-typedef OnSignatureIsEmptyChanged = void Function(bool);
+typedef OnSignatureIsFillChanged = void Function(bool);
 typedef SignatureIsFillBuilder = Widget Function(
   BuildContext context,
   bool isFill,
 );
-typedef OnSignatureStateChanged = void Function(SignatureState);
 
 class SignatureWidget extends StatelessWidget {
   const SignatureWidget({
     super.key,
     required this.controller,
-    this.onSignatureStateChanged,
-    this.hintText = 'Sign here',
+    this.hintText = AppTexts.signatureHintText,
     this.hintTextStyle = const TextStyle(
       fontWeight: FontWeight.w400,
-      color: Color(0xFFAAAAAA),
+      color: AppColors.inactiveColor,
       fontSize: 28,
     ),
-    this.signatureBorderColor = const Color(0xFF72BFEA),
-    this.clearButtonText = 'Clear',
+    this.signatureBorderColor = AppColors.activeColor,
+    this.clearButtonText = AppTexts.signatureClearText,
     this.clearButtonHeight = 50,
     this.clearButtonPadding = const EdgeInsets.only(right: 10, top: 10),
     this.clearButtonAspectRatio = 1.4,
@@ -32,10 +32,10 @@ class SignatureWidget extends StatelessWidget {
     this.clearButtonTextStyle = const TextStyle(
       fontSize: 16,
       fontWeight: FontWeight.w500,
-      color: Color(0xFFFFFFFF),
+      color: AppColors.signatureContentColor,
     ),
-    this.clearButtonBackgroundColor = const Color(0xFFCE0A07),
-    this.backgroundColor = const Color(0xFFFFFFFF),
+    this.clearButtonBackgroundColor = AppColors.errorColor,
+    this.backgroundColor = AppColors.signatureContentColor,
     this.height = 150,
     this.borderRadius = 10,
     this.borderWidth = 2,
@@ -56,7 +56,6 @@ class SignatureWidget extends StatelessWidget {
   final double height;
   final double borderRadius;
   final double borderWidth;
-  final OnSignatureStateChanged? onSignatureStateChanged;
 
   @override
   Widget build(BuildContext context) {
@@ -119,6 +118,7 @@ class _SignatureTextWidget extends StatelessWidget {
     return IgnorePointer(
       child: Align(
         child: SignatureBuilder(
+
           controller: controller,
           builder: (context, isFill) {
             return !isFill

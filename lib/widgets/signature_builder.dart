@@ -7,12 +7,12 @@ class SignatureBuilder extends StatefulWidget {
     super.key,
     required this.builder,
     required this.controller,
-    this.onSignatureIsEmptyChange,
+    this.onSignatureIsFillChanged,
   });
 
   final SignatureIsFillBuilder builder;
   final SignatureController controller;
-  final OnSignatureIsEmptyChanged? onSignatureIsEmptyChange;
+  final OnSignatureIsFillChanged? onSignatureIsFillChanged;
 
   @override
   State<SignatureBuilder> createState() => _SignatureBuilderState();
@@ -52,7 +52,7 @@ class _SignatureBuilderState extends State<SignatureBuilder> {
       return;
     }
     _isFillSignature = isFillSignature;
-    widget.onSignatureIsEmptyChange?.call(isFillSignature);
+    widget.onSignatureIsFillChanged?.call(isFillSignature);
     setState(() {});
   }
 
